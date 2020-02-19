@@ -1,25 +1,23 @@
 import React from 'react'
-import './movieCard.scss'
+import Card from './common/card'
+import { useGenre } from '../context/genreContext'
 
-const MovieCard = ({ posterUrl, title, overview, date }) => {
+const MovieCard = ({ posterUrl, title, overview, date, rating }) => {
+  const cutOverview = () => {
+    if (overview.length >= 200) {
+      return `${overview.substring(0, 200)}...`
+    }
+    return overview
+  }
+
   return (
-    <div className="card">
-      <div className="card__img-wrapper">
-        <img
-          className="card__img"
-          src={`http://image.tmdb.org/t/p/w185/${posterUrl}`}
-          alt={`${title}'s poster`}
-        />
-      </div>
-      <div className="card__info">
-        <div className="title-wrapper">
-          <h1 className="card__title">{title}</h1>
-          <span>{date}</span>
-        </div>
-        <div className="card__overview">{overview}</div>
-        <p className="card__read-more">Read more...</p>
-      </div>
-    </div>
+    <Card
+      title={title}
+      posterUrl={posterUrl}
+      overview={cutOverview()}
+      rating={rating}
+      date={date}
+    />
   )
 }
 

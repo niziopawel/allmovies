@@ -1,13 +1,16 @@
 import React from 'react'
 import Header from './common/header'
-import Movie from './movie'
+import Movies from './movies'
 import './app.scss'
+import AppProviders from '../context/AppProviders'
 
 function App() {
   return (
     <div>
       <Header />
-      <Movie />
+      <AppProviders>
+        <Movies />
+      </AppProviders>
     </div>
   )
 }

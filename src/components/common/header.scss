@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 
 .header-wrapper {
-  height: 70px;
+  height: 7rem;
   background-color: $color-primary;
   box-shadow: 0px 2px 5px rgba($color: #555555, $alpha: 0.8);
 }
@@ -19,7 +19,7 @@
   align-items: center;
 
   &__logo-box {
-    padding-left: 20px;
+    padding-left: 2rem;
   }
 
   & span {

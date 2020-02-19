@@ -17,15 +17,25 @@ const Movie = () => {
     <div className="content">
       <div className="search-results">
         {movies &&
-          movies.map(({ id, title, poster_path, overview, release_date }) => (
-            <MovieCard
-              key={id}
-              title={title}
-              posterUrl={poster_path}
-              date={release_date}
-              overview={overview}
-            />
-          ))}
+          movies.map(
+            ({
+              id,
+              title,
+              poster_path,
+              overview,
+              release_date,
+              vote_average
+            }) => (
+              <MovieCard
+                key={id}
+                title={title}
+                posterUrl={poster_path}
+                date={release_date}
+                overview={overview}
+                rating={vote_average}
+              />
+            )
+          )}
       </div>
     </div>
   )
