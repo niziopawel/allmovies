@@ -32,6 +32,7 @@
     ]
   },
   "devDependencies": {
+    "axios": "^0.19.2",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-import": "^2.18.2",

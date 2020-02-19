@@ -1,0 +1,21 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  height: 278px;
+  min-width: 300px;
+  max-width: 480px;
+
+  &__img-wrapper {
+    width: 185px;
+  }
+
+  &__img {
+    width: 185px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
