@@ -1,6 +1,5 @@
 import React from 'react'
 import Card from './common/card'
-import { useGenre } from '../context/genreContext'
 
 const MovieCard = ({ posterUrl, title, overview, date, rating }) => {
   const cutOverview = () => {
