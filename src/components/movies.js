@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import MovieCard from './movieCard'
+import SearchMovieParams from '../components/searchMovieParams'
 import { getMovies } from '../services/movieService'
-import './movie.scss'
+import './movies.scss'
 
 const Movie = () => {
   const [movies, setMovie] = useState([])
@@ -9,12 +10,15 @@ const Movie = () => {
 
   useEffect(() => {
     getMovies(params)
-      .then(response => setMovie(response.data.results))
+      .then(response => {
+        setMovie(response.data.results)
+      })
       .catch(err => console.log(err))
   }, [params])
 
   return (
     <div className="content">
+      <SearchMovieParams />
       <div className="search-results">
         {movies &&
           movies.map(
