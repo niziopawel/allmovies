@@ -1,10 +1,10 @@
 import React from 'react'
 import './button.scss'
-const Buttton = ({ onClick, type, children }) => {
+const Buttton = ({ type, children }) => {
   return (
-    <button className={`btn ${type ? type : ''}`} onClick={onClick}>
+    <a className={`btn ${type ? type : ''}`} href="/#">
       {children}
-    </button>
+    </a>
   )
 }
 

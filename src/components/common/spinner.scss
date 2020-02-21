@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+
+.spinner-box {
+  display: block;
+  margin: 2rem 0;
+  overflow: hidden;
+  height: 3rem;
+  width: 3rem;
+}
+
+.spinner {
+  width: 3rem;
+  height: 3rem;
+  background: transparen;
+  border-top: 2px solid $color-secondary;
+  border-right: 2px solid transparent;
+  border-radius: 50%;
+  -webkit-animation: 1s spin linear infinite;
+  animation: 1s spin linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

@@ -1,29 +1,33 @@
 import React, { useState } from 'react'
+import { Dropdown } from 'semantic-ui-react'
 
-const useDropdown = ({ label, defaultState, options }) => {
+const useDropdown = (
+  label,
+  defaultState,
+  options,
+  multiple,
+  search,
+  selection
+) => {
   const [state, setState] = useState(defaultState)
-  const id = `use-dropdown-${label.replace(' ', '').toLowerCase()}`
+  // const id = `use-dropdown-${label.replace(' ', '').toLowerCase()}`
+  const stateOptions = options.map(item => ({
+    key: item,
+    text: item,
+    value: item
+  }))
 
-  const Dropdown = () => (
-    <label htmlFor={id}>
-      {label}
-      <select
-        id={id}
-        value={state}
-        onChange={e => setState(e.target.value)}
-        onBlur={e => setState(e.target.value)}
-        disabled={!options}
-      >
-        <option>All</option>
-        {options.map(item => (
-          <option key={item} value={item}>
-            {item}
-          </option>
-        ))}
-      </select>
-    </label>
+  const CustomDropdown = () => (
+    <Dropdown
+      placeholder={label}
+      fluid
+      multiple={multiple}
+      search={search}
+      selection={selection}
+      options={stateOptions}
+    />
   )
-  return [state, Dropdown, setState]
+  return [state, CustomDropdown, setState]
 }
 
 export default useDropdown
