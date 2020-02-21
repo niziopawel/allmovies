@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useGenre } from '../context/genreContext'
+import React from 'react'
 import useDropdown from '../hooks/useDropdown'
 
 const SearchParams = () => {

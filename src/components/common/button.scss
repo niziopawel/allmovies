@@ -1,18 +1,21 @@
 @import '../../styles/variables.scss';
 
 .btn {
-  font-size: 1.2rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: white;
-  background-color: $color-secondary;
-  padding: 12px 45px;
-  transition: transform 80ms ease-in;
-  border-radius: 20px;
-  border: 1px solid $color-secondary;
-  letter-spacing: 1px;
-  margin: 5px 0;
+  font-weight: 400;
+  color: $color-secondary;
+  font-size: 1.3rem;
+  margin: 0.2rem;
+  padding: 0.2rem 0.4rem;
+  border: 1.5px solid $color-secondary;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
 
+  &:hover {
+    color: $color-secondary;
+    // background: $color-secondary;
+  }
   &:active {
     transform: scale(0.95);
   }
