@@ -5,4 +5,18 @@ function getGenres() {
   return response
 }
 
-export { getGenres }
+function getMovieGenres(genres, genreIds) {
+  let movieGenres = []
+  if (genreIds) {
+    genreIds.forEach(id => {
+      genres.forEach(elem => {
+        if (elem.id === id) {
+          movieGenres.push(elem.name)
+        }
+      })
+    })
+    return movieGenres
+  }
+}
+
+export { getGenres, getMovieGenres }

@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 import { Dropdown } from 'semantic-ui-react'
-import './useDropdown.scss'
 
-const useDropdown = (label, options, multiple, search, selection) => {
-  const [state, setState] = useState('')
+const useDropdown = (
+  label,
+  defaultState,
+  options,
+  multiple,
+  search,
+  selection
+) => {
+  const [state, setState] = useState(defaultState)
   // const id = `use-dropdown-${label.replace(' ', '').toLowerCase()}`
-
   const stateOptions = options.map(item => ({
     key: item,
     text: item,

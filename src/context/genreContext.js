@@ -7,7 +7,9 @@ const GenreProvider = props => {
   const [genres, setGenres] = useState([])
 
   useEffect(() => {
-    genreService.getGenres().then(({ data }) => setGenres(data))
+    genreService.getGenres().then(({ data }) => {
+      setGenres(data.genres)
+    })
   }, [])
   return <GenreContext.Provider value={{ genres }} {...props} />
 }
