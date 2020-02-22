@@ -11,26 +11,56 @@ const Movie = () => {
   const [genres, setGenres] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const params = `language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
+  const [searchParams, setSearchParams] = useState({
+    year: 2018,
+    genres: [],
+    sortBy: 'popularity.desc'
+  })
+
+  const queryString = `language=en-US&sort_by=${searchParams.sortBy}&page=1&year=${searchParams.year}`
+
+  useEffect(() => {
+    const abortController = new AbortController()
+    getGenres()
+      .then(response => {
+        setGenres(response.data.genres)
+      })
+      .catch(err => {
+        setError(err)
+      })
+
+    return function cancel() {
+      abortController.abort()
+    }
+  }, [])
 
   useEffect(() => {
     setLoading(true)
-    Promise.all([getMovies(params), getGenres()])
-      .then(response => {
-        setMovies(response[0].data.results)
-        setGenres(response[1].data.genres)
-        setLoading(false)
-      })
-      .catch(err => setError(err))
-  }, [params])
+    getMovies(queryString).then(response => {
+      setMovies(response.data.results)
+      setLoading(false)
+    })
+  }, [queryString])
+
+  const handleParamsChange = (param, value) => {
+    setSearchParams(searchParams => ({ ...searchParams, [param]: value }))
+  }
+
   return (
     <div className="content">
-      <SearchMovieParams />
+      {genres.length && (
+        <SearchMovieParams
+          genres={genres}
+          defaultParams={searchParams}
+          onParamsChange={handleParamsChange}
+        />
+      )}
       {loading && <Spinner />}
       {error && <p>{error}</p>}
-      <div className="search-results">
-        {genres.length > 0 && movies.length > 0
-          ? movies.map(
+      {genres.length && movies.length ? (
+        <React.Fragment>
+          <div className="search-results">
+            {movies.map(
               ({
                 id,
                 title,
@@ -50,9 +80,10 @@ const Movie = () => {
                   genres={getMovieGenres(genres, genre_ids)}
                 />
               )
-            )
-          : null}
-      </div>
+            )}
+          </div>
+        </React.Fragment>
+      ) : null}
     </div>
   )
 }
