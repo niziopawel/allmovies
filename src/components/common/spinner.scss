@@ -11,8 +11,8 @@
 .spinner {
   width: 3rem;
   height: 3rem;
-  background: transparen;
-  border-top: 2px solid $color-secondary;
+  background: transparent;
+  border-top: 2px solid $color-primary;
   border-right: 2px solid transparent;
   border-radius: 50%;
   -webkit-animation: 1s spin linear infinite;
