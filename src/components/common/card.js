@@ -28,14 +28,12 @@ const Card = ({ title, posterUrl, overview, date, rating, genreString }) => {
           <a href="/#" className="card__link">
             {title}
           </a>
+          &nbsp;({returnYearString(date)})
         </h1>
         <div className="card__details">
-          <ul>
-            <li>{returnYearString(date)}</li>
-            <li>
-              Genre: <span>{genreString}</span>
-            </li>
-          </ul>
+          <div className="card__genres">
+            Genre: <span>{genreString}</span>
+          </div>
           <div className="card__rating">
             <i className="material-icons card__star-icon">grade</i>
             <span className="card__rate">{rating}</span>

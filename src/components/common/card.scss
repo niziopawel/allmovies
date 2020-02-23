@@ -9,11 +9,15 @@
   border-radius: 10px;
   box-shadow: 0px 10px 20px 1px rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  background-color: $color-grey-light;
 
-  @media screen and (max-width: 1020px) {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 30px;
+  @media screen and (max-width: 1050px) {
+    width: 70%;
+    margin: 2rem auto 1rem auto;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 95%;
   }
 
   &-left {
@@ -31,8 +35,9 @@
   }
 
   &__img {
-    width: 185px;
     transition: transform 0.2s ease-in-out;
+    max-width: 100%;
+    height: auto;
 
     &:hover {
       transform: scale(1.1);
@@ -50,12 +55,22 @@
   &__title {
     letter-spacing: 1px;
     font-size: 1.8rem;
+    margin: 0;
+
+    @media screen and (max-width: 800px) {
+      font-size: 1.4rem;
+    }
+
+    @media screen and (max-width: 550px) {
+      font-size: 1.2rem;
+    }
   }
 
   &__link {
     font-size: 2rem;
     color: inherit;
     text-decoration: none;
+    border: none;
   }
 
   &__details {
@@ -66,21 +81,18 @@
 
     div:nth-child(-n + 4) {
       padding-top: 1rem;
-    }
 
-    ul {
-      display: flex;
-      list-style: none;
-    }
-
-    li {
-      padding: 0 2rem 0 0;
-      font-size: 1.3rem;
-      color: #4d4d4d;
-
-      > span {
-        font-weight: 700;
+      @media screen and (max-width: 1050px) and (min-width: 600px) {
+        padding-top: 1.5rem;
       }
+    }
+  }
+  .card__genres {
+    font-size: 1.3rem;
+    color: #4d4d4d;
+
+    > span {
+      font-weight: 700;
     }
   }
 
@@ -95,12 +107,20 @@
   &__rate {
     padding-left: 0.5rem;
     font-size: 2rem;
+
+    @media screen and (max-width: 800px) {
+      font-size: 1.6rem;
+    }
   }
   &__overview {
     font-size: 1.3rem;
     font-weight: 300;
     color: #4d4d4d;
     line-height: 1.6rem;
+
+    @media screen and (max-width: 500px) {
+      display: none;
+    }
   }
 
   &__read-more {

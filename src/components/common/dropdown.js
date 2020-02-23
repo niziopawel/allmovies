@@ -11,7 +11,8 @@ const CustomDropdown = ({
   search,
   selection,
   defaultOption,
-  onSelectChange
+  onSelectChange,
+  size
 }) => {
   const [state, setState] = useState(defaultOption)
 
@@ -20,7 +21,7 @@ const CustomDropdown = ({
     onSelectChange(data.name, data.value)
   }
   return (
-    <div className="dropdown-container">
+    <div className={`dropdown-container ${size ? `${size}` : ''} `}>
       <span>{label}</span>
       <Dropdown
         name={name}
