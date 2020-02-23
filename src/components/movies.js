@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import MovieCard from './movieCard'
 import Spinner from './common/spinner'
 import SearchMovieParams from './searchMovieParams'
+import Pagination from './common/pagination'
 import { getGenres, getMovieGenres } from '../services/genreService'
 import { getMovies } from '../services/movieService'
 import './movies.scss'
@@ -9,6 +10,8 @@ import './movies.scss'
 const Movie = () => {
   const [movies, setMovies] = useState([])
   const [genres, setGenres] = useState([])
+  const [totalPages, setTotalPages] = useState('')
+  const [activePage, setActivePage] = useState(1)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [searchParams, setSearchParams] = useState({
@@ -17,10 +20,17 @@ const Movie = () => {
     sortBy: 'popularity.desc'
   })
 
-  const queryString = `language=en-US&sort_by=${searchParams.sortBy}&page=1&year=${searchParams.year}`
+  const queryString = `&sort_by=${searchParams.sortBy}${
+    searchParams.year !== 'All'
+      ? `&primary_release_year=${searchParams.year}`
+      : ''
+  }&page=${activePage}&vote_count.gte=1000${
+    searchParams.genres.length
+      ? `&with_genres=${searchParams.genres.join(',')}`
+      : ''
+  }`
 
   useEffect(() => {
-    const abortController = new AbortController()
     getGenres()
       .then(response => {
         setGenres(response.data.genres)
@@ -28,16 +38,13 @@ const Movie = () => {
       .catch(err => {
         setError(err)
       })
-
-    return function cancel() {
-      abortController.abort()
-    }
   }, [])
 
   useEffect(() => {
     setLoading(true)
     getMovies(queryString).then(response => {
       setMovies(response.data.results)
+      setTotalPages(response.data.total_pages)
       setLoading(false)
     })
   }, [queryString])
@@ -46,15 +53,19 @@ const Movie = () => {
     setSearchParams(searchParams => ({ ...searchParams, [param]: value }))
   }
 
+  const handlePageChange = page => {
+    setActivePage(page)
+  }
+
   return (
     <div className="content">
-      {genres.length && (
+      {genres.length ? (
         <SearchMovieParams
           genres={genres}
           defaultParams={searchParams}
           onParamsChange={handleParamsChange}
         />
-      )}
+      ) : null}
       {loading && <Spinner />}
       {error && <p>{error}</p>}
       {genres.length && movies.length ? (
@@ -81,6 +92,11 @@ const Movie = () => {
                 />
               )
             )}
+            <Pagination
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+              currentPage={activePage}
+            />
           </div>
         </React.Fragment>
       ) : null}

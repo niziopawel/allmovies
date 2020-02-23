@@ -3,18 +3,23 @@
 .dropdown-container {
   display: flex;
   flex-direction: column;
+  margin: 0.5rem 1rem 0.5rem 0rem;
 
-  > span {
-    padding-left: 2px;
-    font-size: 1.4rem;
-    padding: 2rem 0 0.3rem 0;
+  &.small {
+    width: 10rem;
   }
-}
-.ui.fluid.dropdown {
-  display: inline-block;
-  max-width: 350px;
-  min-width: 200px;
-  width: auto;
+
+  &.medium {
+    width: 20rem;
+  }
+
+  &.large {
+    width: 31rem;
+  }
+  > span {
+    font-size: 1.4rem;
+    padding: 1rem 0 0.3rem 0.2rem;
+  }
 }
 
 .ui.dropdown .menu > .item {

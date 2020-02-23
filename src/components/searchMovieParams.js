@@ -10,7 +10,7 @@ const SearchMovieParams = ({ genres, onParamsChange, defaultParams }) => {
       Array(currentYear - firstYearInRange),
       (x, index) => currentYear - index
     )
-    return ['None', ...years]
+    return ['All', ...years]
   }
 
   const sortingValues = [
@@ -26,8 +26,8 @@ const SearchMovieParams = ({ genres, onParamsChange, defaultParams }) => {
   const sortingOptions = mapArrayToDropdownOptions(sortingValues)
 
   return (
-    <div className="container">
-      <h1 style={{ textAlign: 'center' }}>Discover New Movies</h1>
+    <div className="search-container">
+      <h1>Discover New Movies</h1>
       <div className="search-params">
         <Dropdown
           label="Year"
@@ -37,6 +37,7 @@ const SearchMovieParams = ({ genres, onParamsChange, defaultParams }) => {
           selection
           defaultOption={defaultParams.year}
           onSelectChange={onParamsChange}
+          size="small"
         />
         <Dropdown
           label="Genres"
@@ -48,6 +49,7 @@ const SearchMovieParams = ({ genres, onParamsChange, defaultParams }) => {
           onSelectChange={onParamsChange}
           multiple
           search
+          size="medium"
         />
         <Dropdown
           label="Sort By"
@@ -56,6 +58,7 @@ const SearchMovieParams = ({ genres, onParamsChange, defaultParams }) => {
           selection
           defaultOption={defaultParams.sortBy}
           onSelectChange={onParamsChange}
+          size="large"
         />
       </div>
     </div>
