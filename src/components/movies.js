@@ -51,6 +51,7 @@ const Movie = () => {
 
   const handleParamsChange = (param, value) => {
     setSearchParams(searchParams => ({ ...searchParams, [param]: value }))
+    setActivePage(1)
   }
 
   const handlePageChange = page => {
@@ -92,12 +93,12 @@ const Movie = () => {
                 />
               )
             )}
-            <Pagination
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-              currentPage={activePage}
-            />
           </div>
+          <Pagination
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+            currentPage={activePage}
+          />
         </React.Fragment>
       ) : null}
     </div>

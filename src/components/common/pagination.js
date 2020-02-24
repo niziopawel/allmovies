@@ -9,6 +9,10 @@ const Pagination = ({ totalPages, onPageChange, currentPage }) => {
   }
 
   const returnPagesArray = (totalPages, currentPage) => {
+    if (totalPages < 6) {
+      return [...Array(totalPages)].map((v, i) => i + 1)
+    }
+
     if (currentPage < 4) {
       return [...Array(6)].map((v, i) => i + 1)
     }
