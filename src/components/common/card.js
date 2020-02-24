@@ -15,7 +15,7 @@ const Card = ({ title, posterUrl, overview, date, rating, genreString }) => {
       <div className="card-left">
         {posterUrl ? (
           <img
-            src={`http://image.tmdb.org/t/p/w185/${posterUrl}`}
+            src={`https://image.tmdb.org/t/p/w185/${posterUrl}`}
             alt={`${title}'s poster`}
             className="card__img"
           />

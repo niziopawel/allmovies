@@ -12,9 +12,6 @@ const Header = () => {
           <li className="header__nav-item">
             <a href="/#">Movies</a>
           </li>
-          <li className="header__nav-item">
-            <a href="/#">Favorite</a>
-          </li>
         </ul>
       </header>
     </div>
