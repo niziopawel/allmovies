@@ -1,5 +1,5 @@
 import React from 'react'
-import ArrowButton from './arrowButton'
+import ArrowButton from '../Buttons/arrowButton'
 import './card.scss'
 
 const Card = ({ title, posterUrl, overview, date, rating, genreString }) => {

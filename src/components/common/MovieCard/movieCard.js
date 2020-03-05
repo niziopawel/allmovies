@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from './common/card'
+import Card from '../Cards/card'
 
 const MovieCard = ({ posterUrl, title, overview, date, rating, genres }) => {
   const formatOverview = overview => {

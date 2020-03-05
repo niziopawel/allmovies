@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import MovieCard from './movieCard'
-import Spinner from './common/spinner'
-import SearchMovieParams from './searchMovieParams'
-import Pagination from './common/pagination'
-import { getGenres, getMovieGenres } from '../services/genreService'
-import { getMovies } from '../services/movieService'
+import MovieCard from '../common/MovieCard/movieCard'
+import Spinner from '../common/Spinner/spinner'
+import SearchMovieParams from '../common/SearchParams/searchMovieParams'
+import Pagination from '../common/Pagination/pagination'
+import { getGenres, getMovieGenres } from '../../services/genreService'
+import { getMovies } from '../../services/movieService'
 import './movies.scss'
 
 const Movie = () => {

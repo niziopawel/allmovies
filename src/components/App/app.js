@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from './common/header'
-import Movies from './movies'
+import Header from '../common/Header/header'
+import Movies from '../DiscoverMovie/movies'
 import './app.scss'
-import AppProviders from '../context/AppProviders'
+import AppProviders from '../../context/AppProviders'
 
 function App() {
   return (
