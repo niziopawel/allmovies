@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from '@reach/router'
 import './pagination.scss'
 
 const Pagination = ({ totalPages, onPageChange, currentPage }) => {
   if (totalPages === 1) return null
 
-  const handlePageChange = page => {
+  const handlePageChange = (e, page) => {
+    e.preventDefault()
     onPageChange(page)
   }
 
@@ -31,9 +33,9 @@ const Pagination = ({ totalPages, onPageChange, currentPage }) => {
       <ul className="pagination__list">
         {currentPage !== 1 ? (
           <li className="pagination__item">
-            <a href="/#" onClick={() => handlePageChange(currentPage - 1)}>
+            <Link to="/#" onClick={() => handlePageChange(currentPage - 1)}>
               Prev
-            </a>
+            </Link>
           </li>
         ) : null}
         {returnPagesArray(totalPages, currentPage).map(page => {
@@ -47,18 +49,18 @@ const Pagination = ({ totalPages, onPageChange, currentPage }) => {
               {currentPage === page ? (
                 <span>{page}</span>
               ) : (
-                <a href="/#" onClick={() => handlePageChange(page)}>
+                <Link to="/#" onClick={e => handlePageChange(e, page)}>
                   {page}
-                </a>
+                </Link>
               )}
             </li>
           )
         })}
         {totalPages !== currentPage ? (
           <li className="pagination__item">
-            <a href="/#" onClick={() => handlePageChange(currentPage + 1)}>
+            <Link to="/#" onClick={() => handlePageChange(currentPage + 1)}>
               Next
-            </a>
+            </Link>
           </li>
         ) : null}
       </ul>

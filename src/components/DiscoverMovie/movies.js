@@ -56,6 +56,7 @@ const Movie = () => {
 
   const handlePageChange = page => {
     setActivePage(page)
+    window.scrollTo(0, 0)
   }
 
   return (
