@@ -1,7 +1,15 @@
 import React from 'react'
 import Card from '../Cards/card'
 
-const MovieCard = ({ posterUrl, title, overview, date, rating, genres }) => {
+const MovieCard = ({
+  id,
+  posterUrl,
+  title,
+  overview,
+  date,
+  rating,
+  genres
+}) => {
   const formatOverview = overview => {
     if (overview.length > 150) {
       const index = overview.substring(0, 150).lastIndexOf(' ')
@@ -22,6 +30,7 @@ const MovieCard = ({ posterUrl, title, overview, date, rating, genres }) => {
       rating={rating}
       date={date}
       genreString={formatGenres(genres)}
+      navigatePath={`/movie/${id}`}
     />
   )
 }

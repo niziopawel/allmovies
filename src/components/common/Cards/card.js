@@ -1,13 +1,27 @@
 import React from 'react'
 import ArrowButton from '../Buttons/arrowButton'
+import { navigate } from '@reach/router'
 import './card.scss'
+import { Link } from '@reach/router'
 
-const Card = ({ title, posterUrl, overview, date, rating, genreString }) => {
+const Card = ({
+  title,
+  posterUrl,
+  overview,
+  date,
+  rating,
+  genreString,
+  navigatePath
+}) => {
   const returnYearString = date => {
     if (date) {
       return date.substring(0, 4)
     }
     return 'Uknown'
+  }
+
+  const handleClick = () => {
+    navigate(navigatePath)
   }
 
   return (
@@ -25,9 +39,9 @@ const Card = ({ title, posterUrl, overview, date, rating, genreString }) => {
       </div>
       <div className="card-right">
         <h1 className="card__title">
-          <a href="/#" className="card__link">
+          <Link to={navigatePath} className="card__link">
             {title}
-          </a>
+          </Link>
           &nbsp;({returnYearString(date)})
         </h1>
         <div className="card__details">
@@ -40,7 +54,7 @@ const Card = ({ title, posterUrl, overview, date, rating, genreString }) => {
           </div>
           <div className="card__overview">{overview}</div>
         </div>
-        <ArrowButton>Read more</ArrowButton>
+        <ArrowButton onClick={handleClick}>Read more</ArrowButton>
       </div>
     </div>
   )

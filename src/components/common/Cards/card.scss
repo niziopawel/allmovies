@@ -28,6 +28,7 @@
   @media screen and (max-width: 500px) {
     height: 225px;
   }
+
   &-left {
     position: relative;
     min-width: 185px;
@@ -46,14 +47,18 @@
   }
 
   &__img {
-    transition: transform 0.2s ease-in-out;
     max-width: 100%;
     height: auto;
 
     @media screen and (min-width: 800px) {
+      transition: transform 0.2s ease-in-out;
       &:hover {
         transform: scale(1.1);
       }
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 150px;
     }
   }
 

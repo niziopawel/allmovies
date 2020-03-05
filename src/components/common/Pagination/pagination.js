@@ -33,7 +33,7 @@ const Pagination = ({ totalPages, onPageChange, currentPage }) => {
       <ul className="pagination__list">
         {currentPage !== 1 ? (
           <li className="pagination__item">
-            <Link to="/#" onClick={() => handlePageChange(currentPage - 1)}>
+            <Link to="/#" onClick={e => handlePageChange(e, currentPage - 1)}>
               Prev
             </Link>
           </li>
@@ -58,7 +58,7 @@ const Pagination = ({ totalPages, onPageChange, currentPage }) => {
         })}
         {totalPages !== currentPage ? (
           <li className="pagination__item">
-            <Link to="/#" onClick={() => handlePageChange(currentPage + 1)}>
+            <Link to="/#" onClick={e => handlePageChange(e, currentPage + 1)}>
               Next
             </Link>
           </li>

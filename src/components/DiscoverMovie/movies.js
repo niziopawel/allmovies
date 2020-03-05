@@ -60,48 +60,49 @@ const Movie = () => {
   }
 
   return (
-    <div className="content">
-      {genres.length ? (
-        <SearchMovieParams
-          genres={genres}
-          defaultParams={searchParams}
-          onParamsChange={handleParamsChange}
-        />
-      ) : null}
-      {loading && <Spinner />}
-      {error && <p>{error}</p>}
-      {genres.length && movies.length ? (
-        <React.Fragment>
-          <div className="search-results">
-            {movies.map(
-              ({
-                id,
-                title,
-                poster_path,
-                overview,
-                release_date,
-                vote_average,
-                genre_ids
-              }) => (
-                <MovieCard
-                  key={id}
-                  title={title}
-                  posterUrl={poster_path}
-                  date={release_date}
-                  overview={overview}
-                  rating={vote_average}
-                  genres={getMovieGenres(genres, genre_ids)}
-                />
-              )
-            )}
-          </div>
-          <Pagination
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-            currentPage={activePage}
-          />
-        </React.Fragment>
-      ) : null}
+    <div className="container">
+      <div className="content">
+        {loading && <Spinner />}
+        {error && <p>{error}</p>}
+        {genres.length && movies.length ? (
+          <React.Fragment>
+            <SearchMovieParams
+              genres={genres}
+              defaultParams={searchParams}
+              onParamsChange={handleParamsChange}
+            />
+            <div className="search-results">
+              {movies.map(
+                ({
+                  id,
+                  title,
+                  poster_path,
+                  overview,
+                  release_date,
+                  vote_average,
+                  genre_ids
+                }) => (
+                  <MovieCard
+                    id={id}
+                    key={id}
+                    title={title}
+                    posterUrl={poster_path}
+                    date={release_date}
+                    overview={overview}
+                    rating={vote_average}
+                    genres={getMovieGenres(genres, genre_ids)}
+                  />
+                )
+              )}
+            </div>
+            <Pagination
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+              currentPage={activePage}
+            />
+          </React.Fragment>
+        ) : null}
+      </div>
     </div>
   )
 }

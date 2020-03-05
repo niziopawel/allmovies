@@ -10,4 +10,9 @@ function getMovies(params) {
   return response
 }
 
-export { getMovieById, getMovies }
+function getMovieCredits(id) {
+  const response = client(`movie/${id}/credits`)
+  return response
+}
+
+export { getMovieById, getMovies, getMovieCredits }
