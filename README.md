@@ -9,6 +9,11 @@
 ## General info
 
 Project for browsing and filtering movies. Used themoviedb.org database/api. Project created for educational purposes.
+
+## App Demo
+
+(https://all-movies.herokuapp.com/)
+
 ## Technologies
 
 Project is created with:
@@ -26,7 +31,7 @@ $ npm install / yarn
 $ npm run start / yarn start
 ```
 
-## Screenshot
+## Screenshots
 
 ![image](./screenshots/s1.png)
 ![image](./screenshots/s2.png)
