@@ -1,6 +1,5 @@
 import React from 'react'
-import ArrowButton from './arrowButton'
-import './card.scss'
+import ArrowButton from '../buttons/ArrowButton'
 
 const Card = ({ title, posterUrl, overview, date, rating, genreString }) => {
   const returnYearString = date => {
