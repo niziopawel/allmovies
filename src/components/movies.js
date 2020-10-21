@@ -31,22 +31,32 @@ const Movie = () => {
   }`
 
   useEffect(() => {
+    let isMounted = true
     getGenres()
       .then(response => {
-        setGenres(response.data.genres)
+        if (isMounted) {
+          setGenres(response.data.genres)
+        }
       })
       .catch(err => {
         setError(err)
       })
+    return () => (isMounted = false)
   }, [])
 
   useEffect(() => {
+    let isMounted = true
     setLoading(true)
-    getMovies(queryString).then(response => {
-      setMovies(response.data.results)
-      setTotalPages(response.data.total_pages)
-      setLoading(false)
-    })
+    getMovies(queryString)
+      .then(response => {
+        if (isMounted) {
+          setMovies(response.data.results)
+          setTotalPages(response.data.total_pages)
+          setLoading(false)
+        }
+      })
+      .catch(err => setError(err))
+    return () => (isMounted = false)
   }, [queryString])
 
   const handleParamsChange = (param, value) => {

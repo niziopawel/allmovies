@@ -6,12 +6,12 @@ import AppProviders from '../context/AppProviders'
 
 function App() {
   return (
-    <div>
+    <React.Fragment>
       <Header />
       <AppProviders>
         <Movies />
       </AppProviders>
-    </div>
+    </React.Fragment>
   )
 }
 
