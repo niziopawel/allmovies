@@ -1,9 +1,8 @@
 import React from 'react'
-import Dropdown from './common/dropdown'
-import './searchMovieParams.scss'
-import { mapArrayToDropdownOptions } from '../utils/helpers'
+import Dropdown from '../dropdown'
+import { mapArrayToDropdownOptions } from '../../utils/helpers'
 
-const SearchMovieParams = ({ genres, onParamsChange, defaultParams }) => {
+const FilterMovieParams = ({ genres, onParamsChange, defaultParams }) => {
   const returnYearsArray = firstYearInRange => {
     const currentYear = new Date().getFullYear()
     const years = Array.from(
@@ -65,4 +64,4 @@ const SearchMovieParams = ({ genres, onParamsChange, defaultParams }) => {
   )
 }
 
-export default SearchMovieParams
+export default FilterMovieParams

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import MovieCard from './movieCard'
-import Spinner from './common/spinner'
-import SearchMovieParams from './searchMovieParams'
-import Pagination from './common/pagination'
+import MovieCard from '../components/movie-card'
+import Spinner from '../components/spinner'
+import FilterMovieParams from '../components/filter-movie-params'
+import Pagination from '../components/pagination'
 import { getGenres, getMovieGenres } from '../services/genreService'
 import { getMovies } from '../services/movieService'
-import './movies.scss'
 
-const Movie = () => {
+const DiscoverMovies = () => {
   const [movies, setMovies] = useState([])
   const [genres, setGenres] = useState([])
   const [totalPages, setTotalPages] = useState('')
@@ -71,7 +70,7 @@ const Movie = () => {
   return (
     <div className="content">
       {genres.length ? (
-        <SearchMovieParams
+        <FilterMovieParams
           genres={genres}
           defaultParams={searchParams}
           onParamsChange={handleParamsChange}
@@ -115,4 +114,4 @@ const Movie = () => {
   )
 }
 
-export default Movie
+export default DiscoverMovies

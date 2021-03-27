@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from 'react'
 import * as genreService from '../services/genreService'
-import Spinner from '../components/common/spinner'
+import Spinner from '../components/spinner'
 const GenreContext = createContext()
 
 const GenreProvider = props => {

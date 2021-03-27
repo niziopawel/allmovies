@@ -1,15 +1,14 @@
 import React from 'react'
-import Header from './common/header'
-import Movies from './movies'
-import './app.scss'
-import AppProviders from '../context/AppProviders'
+import Header from './layout/header/Header'
+import DiscoverMovies from './pages/DiscoverMovies'
+import AppProviders from './context/AppProviders'
 
 function App() {
   return (
     <React.Fragment>
       <Header />
       <AppProviders>
-        <Movies />
+        <DiscoverMovies />
       </AppProviders>
     </React.Fragment>
   )
