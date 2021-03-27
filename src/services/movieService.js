@@ -5,9 +5,15 @@ function getMovieById(id, parameters) {
   return response
 }
 
-function getMovies(params) {
-  const response = client(`discover/movie`, null, params)
-  return response
+function getMovies(queryString) {
+  return client(`discover/movie`, null, queryString)
+    .then(res => {
+      return {
+        movies: res.data.results,
+        totalPages: res.data.total_pages
+      }
+    })
+    .catch(err => err.message)
 }
 
 export { getMovieById, getMovies }

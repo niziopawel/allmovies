@@ -1,87 +1,53 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import MovieCard from '../components/movie-card'
 import Spinner from '../components/spinner'
 import FilterMovieParams from '../components/filter-movie-params'
 import Pagination from '../components/pagination'
-import { getGenres, getMovieGenres } from '../services/genreService'
-import { getMovies } from '../services/movieService'
+import { useGenres } from '../hooks/useGenres'
+import { useMovies } from '../hooks/useMovies'
+import { getMovieGenres } from '../services/genreService'
 
 const DiscoverMovies = () => {
-  const [movies, setMovies] = useState([])
-  const [genres, setGenres] = useState([])
-  const [totalPages, setTotalPages] = useState('')
   const [activePage, setActivePage] = useState(1)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-  const [searchParams, setSearchParams] = useState({
-    year: 2018,
-    genres: [],
-    sortBy: 'popularity.desc'
+  const [filterParams, setFilterParams] = useState({
+    sortBy: 'popularity.desc',
+    year: null,
+    genres: []
   })
 
-  const queryString = `&sort_by=${searchParams.sortBy}${
-    searchParams.year !== 'All'
-      ? `&primary_release_year=${searchParams.year}`
+  const queryString = `&sort_by=${filterParams.sortBy}${
+    filterParams.year !== 'All'
+      ? `&primary_release_year=${filterParams.year}`
       : ''
   }&page=${activePage}&vote_count.gte=1000${
-    searchParams.genres.length
-      ? `&with_genres=${searchParams.genres.join(',')}`
+    filterParams.genres.length
+      ? `&with_genres=${filterParams.genres.join(',')}`
       : ''
   }`
 
-  useEffect(() => {
-    let isMounted = true
-    getGenres()
-      .then(response => {
-        if (isMounted) {
-          setGenres(response.data.genres)
-        }
-      })
-      .catch(err => {
-        setError(err)
-      })
-    return () => (isMounted = false)
-  }, [])
+  const genresInfo = useGenres()
+  const moviesInfo = useMovies(queryString)
 
-  useEffect(() => {
-    let isMounted = true
-    setLoading(true)
-    getMovies(queryString)
-      .then(response => {
-        if (isMounted) {
-          setMovies(response.data.results)
-          setTotalPages(response.data.total_pages)
-          setLoading(false)
-        }
-      })
-      .catch(err => setError(err))
-    return () => (isMounted = false)
-  }, [queryString])
-
-  const handleParamsChange = (param, value) => {
-    setSearchParams(searchParams => ({ ...searchParams, [param]: value }))
+  function handleFilterParamsChange(param, value) {
+    setFilterParams(searchParams => ({ ...searchParams, [param]: value }))
     setActivePage(1)
-  }
-
-  const handlePageChange = page => {
-    setActivePage(page)
   }
 
   return (
     <div className="content">
-      {genres.length ? (
+      {genresInfo?.data?.length ? (
         <FilterMovieParams
-          genres={genres}
-          defaultParams={searchParams}
-          onParamsChange={handleParamsChange}
+          genres={genresInfo.data}
+          defaultParams={filterParams}
+          onParamsChange={handleFilterParamsChange}
         />
       ) : null}
-      {loading && <Spinner />}
-      {error && <p>{error}</p>}
-      {genres.length && movies.length ? (
+      {moviesInfo.isLoading && <Spinner />}
+      {moviesInfo.isError && <p>{moviesInfo.error}</p>}
+      {moviesInfo.isSuccess && genresInfo.isSuccess ? (
         <React.Fragment>
           <div className="search-results">
-            {movies.map(
+            {moviesInfo?.data?.movies?.map(
               ({
                 id,
                 title,
@@ -98,14 +64,14 @@ const DiscoverMovies = () => {
                   date={release_date}
                   overview={overview}
                   rating={vote_average}
-                  genres={getMovieGenres(genres, genre_ids)}
+                  genres={getMovieGenres(genresInfo.data, genre_ids)}
                 />
               )
             )}
           </div>
           <Pagination
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
+            totalPages={moviesInfo.data.total_pages}
+            onPageChange={page => setActivePage(page)}
             currentPage={activePage}
           />
         </React.Fragment>

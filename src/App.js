@@ -1,16 +1,18 @@
 import React from 'react'
-import Header from './layout/header/Header'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
+import Header from './layout/header'
 import DiscoverMovies from './pages/DiscoverMovies'
-import AppProviders from './context/AppProviders'
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <React.Fragment>
+    <QueryClientProvider client={queryClient}>
       <Header />
-      <AppProviders>
-        <DiscoverMovies />
-      </AppProviders>
-    </React.Fragment>
+      <DiscoverMovies />
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   )
 }
 

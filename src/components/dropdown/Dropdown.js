@@ -13,10 +13,10 @@ const CustomDropdown = ({
   onSelectChange,
   size
 }) => {
-  const [state, setState] = useState(defaultOption)
+  const [dropdownState, setDropdownState] = useState(defaultOption)
 
   const handleChange = (e, data) => {
-    setState(data.value)
+    setDropdownState(data.value)
     onSelectChange(data.name, data.value)
   }
   return (
@@ -24,7 +24,7 @@ const CustomDropdown = ({
       <span>{label}</span>
       <Dropdown
         name={name}
-        value={state}
+        value={dropdownState}
         disabled={!options}
         placeholder={placeholder}
         fluid

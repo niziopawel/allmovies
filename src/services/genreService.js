@@ -1,8 +1,9 @@
 import { client } from './httpService'
 
 function getGenres() {
-  const response = client(`genre/movie/list`, null, null)
-  return response
+  return client(`genre/movie/list`, null, null)
+    .then(res => res.data.genres)
+    .catch(error => error.message)
 }
 
 function getMovieGenres(genres, genreIds) {

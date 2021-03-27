@@ -1,6 +1,6 @@
 import React from 'react'
 import Dropdown from '../dropdown'
-import { mapArrayToDropdownOptions } from '../../utils/helpers'
+import { mapArrayToDropdownOptions } from './utils/helpers'
 
 const FilterMovieParams = ({ genres, onParamsChange, defaultParams }) => {
   const returnYearsArray = firstYearInRange => {
