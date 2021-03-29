@@ -1,13 +1,18 @@
 @import './base/reset';
-@import './base/colors';
+@import './base/typography';
+@import './base/base';
+
+@import './abstracts/mixins';
+@import './abstracts/colors';
+@import './abstracts/variables';
 
 @import './components/buttons';
 @import './components/card';
 @import './components/pagination';
 @import './components/spinner';
 @import './components/dropdown';
-@import './components/filterMovieParams';
+@import './components/movieCard';
 
 @import './layout/header';
 
-@import './pages/discoverMovies';
+@import './pages/movies';

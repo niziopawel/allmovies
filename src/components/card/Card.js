@@ -1,48 +1,31 @@
 import React from 'react'
-import ArrowButton from '../buttons/ArrowButton'
 
-const Card = ({ title, posterUrl, overview, date, rating, genreString }) => {
-  const returnYearString = date => {
-    if (date) {
-      return date.substring(0, 4)
-    }
-    return 'Uknown'
-  }
-
+function Card({ className, children, ...restProps }) {
   return (
-    <div className="card">
-      <div className="card-left">
-        {posterUrl ? (
-          <img
-            src={`https://image.tmdb.org/t/p/w185/${posterUrl}`}
-            alt={`${title}'s poster`}
-            className="card__img"
-          />
-        ) : (
-          <i className="material-icons">movie</i>
-        )}
-      </div>
-      <div className="card-right">
-        <h1 className="card__title">
-          <a href="/#" className="card__link">
-            {title}
-          </a>
-          &nbsp;({returnYearString(date)})
-        </h1>
-        <div className="card__details">
-          <div className="card__genres">
-            Genre: <span>{genreString}</span>
-          </div>
-          <div className="card__rating">
-            <i className="material-icons card__star-icon">grade</i>
-            <span className="card__rate">{rating}</span>
-          </div>
-          <div className="card__overview">{overview}</div>
-        </div>
-        <ArrowButton>Read more</ArrowButton>
-      </div>
+    <div className={`card ${className ? className : ''}`} {...restProps}>
+      {children}
     </div>
   )
+}
+
+Card.Content = function CardContent({ children }) {
+  return <div className="card__content">{children}</div>
+}
+
+Card.Image = function CardImage({ className, src, alt, ...restProps }) {
+  return (
+    <div className={`card__image ${className ? className : ''}`}>
+      <img src={src} alt={alt} {...restProps} />
+    </div>
+  )
+}
+
+Card.Title = function CardTitle({ children }) {
+  return <h5 className="card__title">{children}</h5>
+}
+
+Card.Description = function CardDescription({ children }) {
+  return <p className="card__description">{children}</p>
 }
 
 export default Card

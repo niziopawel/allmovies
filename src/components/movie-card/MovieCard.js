@@ -1,28 +1,24 @@
 import React from 'react'
 import Card from '../card'
+import { formatMovieOverview } from './utils/helpers'
 
-const MovieCard = ({ posterUrl, title, overview, date, rating, genres }) => {
-  const formatOverview = overview => {
-    if (overview.length > 200) {
-      const index = overview.substring(0, 200).lastIndexOf(' ')
-      return `${overview.substring(0, index)}...`
-    }
-    return overview
-  }
-
-  const formatGenres = genres => {
-    return genres.join(', ')
-  }
+const MovieCard = ({ posterPath, title, overview }) => {
+  const formattedOverview = formatMovieOverview(overview)
 
   return (
-    <Card
-      title={title}
-      posterUrl={posterUrl}
-      overview={formatOverview(overview)}
-      rating={rating}
-      date={date}
-      genreString={formatGenres(genres)}
-    />
+    <Card className="movie-card">
+      <Card.Image
+        src={`https://themoviedb.org/t/p/w220_and_h330_face${posterPath}`}
+        alt="Poster"
+        className="poster"
+      />
+      <Card.Content>
+        <Card.Title>
+          <a href="/">{title}</a>
+        </Card.Title>
+        <Card.Description>{formattedOverview}</Card.Description>
+      </Card.Content>
+    </Card>
   )
 }
 

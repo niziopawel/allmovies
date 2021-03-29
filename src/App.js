@@ -1,16 +1,19 @@
 import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import Header from './layout/header'
-import DiscoverMovies from './pages/DiscoverMovies'
+import Header from './layout/Header'
+import Wrapper from './layout/Wrapper'
+import Main from './layout/Main'
 
 const queryClient = new QueryClient()
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Header />
-      <DiscoverMovies />
+      <Wrapper>
+        <Header />
+        <Main />
+      </Wrapper>
       <ReactQueryDevtools />
     </QueryClientProvider>
   )
