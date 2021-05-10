@@ -1,0 +1,82 @@
+@import '../abstracts/mixins';
+
+:root {
+  --base-size: 16px;
+  --type-scale: 1.2;
+  --text-xs: calc(var(--base-size) / (var(--type-scale) * var(--type-scale)));
+  --text-sm: calc(var(--text-xs) * var(--type-scale));
+  --text-md: calc(var(--text-sm) * var(--type-scale));
+  --text-lg: calc(var(--text-md) * var(--type-scale));
+  --text-xl: calc(var(--text-lg) * var(--type-scale));
+  --text-xxl: calc(var(--text-xl) * var(--type-scale));
+  --text-xxxl: calc(avr(--text-xxl) * var(--type-scale));
+}
+
+html,
+body {
+  font-size: var(--base-size);
+  line-height: 1.5em;
+  color: #000;
+}
+
+h1,
+.text-xxxl {
+  font-size: var(--text-xxxl);
+  font-weight: 400;
+}
+
+h2,
+.text-xxl {
+  font-size: var(--text-xxl);
+  font-weight: 400;
+}
+
+h3,
+.text-xl {
+  font-weight: 400;
+  font-size: var(--text-xl);
+}
+
+h4,
+.text-lg {
+  font-weight: 400;
+  font-size: var(--text-lg);
+}
+
+h5,
+.text-md {
+  font-weight: 500;
+  font-size: var(--text-md);
+}
+
+p {
+  font-size: var(--base-size);
+}
+
+button {
+  font-size: var(--base-size);
+  font-weight: 600;
+  letter-spacing: 1.15px;
+}
+
+label {
+  font-size: var(--base-size);
+  font-weight: 500;
+}
+
+small,
+.text-xs {
+  font-size: var(--text-xs);
+}
+
+@include media('tablet') {
+  :root {
+    --type-scale: 1.25;
+  }
+}
+
+@include media('desktop') {
+  :root {
+    --type-scale: 1.3;
+  }
+}

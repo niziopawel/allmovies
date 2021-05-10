@@ -1,0 +1,60 @@
+.movies-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  --columns: 1;
+  --width: 1;
+  --gap-constant: 0.5%;
+  --initialBasis: calc(var(--width) / var(--columns) * 100%);
+  --gap: calc((var(--columns) - var(--width)) * var(--gap-constant));
+  --movieCardWidth: calc(var(--initialBasis) - var(--gap));
+
+  &::after {
+    content: '';
+    flex-basis: var(--movieCardWidth);
+  }
+}
+
+.movie-card {
+  flex-basis: var(--movieCardWidth);
+}
+
+.poster {
+  width: 100px;
+  height: auto;
+}
+
+@include media('phone') {
+  .movies-list {
+    --columns: 3;
+    --gap-constant: 1%;
+  }
+
+  .poster {
+    width: 100%;
+  }
+  .filter {
+    min-width: 260px;
+  }
+}
+
+@include media('tablet') {
+}
+
+@include media('desktop') {
+  .movies-list {
+    --columns: 4;
+    --gap-constant: 0.5%;
+  }
+
+  .filter {
+    min-width: 300px;
+  }
+}
+
+@include media('bigDesktop') {
+  .movies-list {
+    --columns: 5;
+  }
+}

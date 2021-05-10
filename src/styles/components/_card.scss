@@ -1,0 +1,47 @@
+.card {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background: #fff;
+  padding: 0;
+  border-radius: 8px;
+  border: none;
+  box-shadow: var(--shadow-1);
+  width: 290px;
+  position: relative;
+  margin-top: 1.5rem;
+
+  &__content {
+    padding: 0.8em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+  }
+
+  &__description {
+    font-size: 0.8em;
+    color: var(--clr-text-black-light);
+    line-height: 1.3em;
+    margin-top: 0.5em;
+  }
+
+  &__image {
+    padding: 0;
+    flex: 0 0 auto;
+    display: block;
+    position: relative;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+@include media('phone') {
+  .card {
+    flex-direction: column;
+  }
+}

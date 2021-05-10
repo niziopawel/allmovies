@@ -1,0 +1,34 @@
+<<<<<<< HEAD:src/styles/components/Dropdown/dropdown.scss
+@import '../../../styles/variables.scss';
+
+=======
+>>>>>>> refactor:src/styles/components/_dropdown.scss
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 1rem 0.5rem 0rem;
+  width: 100%;
+
+  > span {
+    font-size: 1.4rem;
+    padding: 1rem 0 0.3rem 0.2rem;
+  }
+
+  @media screen and (min-width: 500px) {
+    &.small {
+      width: 10rem;
+    }
+
+    &.medium {
+      width: 20rem;
+    }
+
+    &.large {
+      width: 31rem;
+    }
+  }
+}
+
+.ui.dropdown .menu > .item {
+  font-size: 1.5rem;
+}

@@ -1,0 +1,32 @@
+<<<<<<< HEAD:src/styles/components/Spinner/spinner.scss
+@import '../../../styles/variables.scss';
+
+=======
+>>>>>>> refactor:src/styles/components/_spinner.scss
+.spinner-box {
+  display: block;
+  margin: 2rem auto;
+  overflow: hidden;
+  height: 3rem;
+  width: 3rem;
+}
+
+.spinner {
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  border-top: 2px solid var(--clr-primary);
+  border-right: 2px solid transparent;
+  border-radius: 50%;
+  -webkit-animation: 1s spin linear infinite;
+  animation: 1s spin linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
