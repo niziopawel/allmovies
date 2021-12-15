@@ -1,5 +1,4 @@
 import React from 'react'
-import './arrowButton.scss'
 
 const ArrowButton = ({ children }) => {
   return (
