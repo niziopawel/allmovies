@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Dropdown } from 'semantic-ui-react'
-import './dropdown.scss'
 
 const CustomDropdown = ({
   label,

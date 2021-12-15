@@ -1,5 +1,4 @@
 import React from 'react'
-import './pagination.scss'
 
 const Pagination = ({ totalPages, onPageChange, currentPage }) => {
   if (totalPages === 1) return null
